@@ -1,6 +1,11 @@
 //global variables
-var apiKey = "9e9d71158740d71176cbc74fb3a5e39b";
+var apiKey = "0911ed110324026c09339a4f30aae17c";
+var cityName = [];
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + cityName;
 var savedSearches = [];
+
+
+
 
 //create list of recent searched cities
 var searchHistoryList = function(cityName) {
@@ -57,7 +62,7 @@ var loadSearchHistory = function() {
 };
 //retrieve data from open weather api for city
 var currentWeatherZone = function(cityName) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=cityName&appid=apiKey`)
     //generate a response
         .then(function(response) {
             return response.json();
@@ -81,7 +86,7 @@ var currentWeatherZone = function(cityName) {
 
                     // add city name, date and icon 
                     var currentTitle = $("#current-title");
-                    var currentDay = moment().format("M/D/YYYY");
+                    var currentDay = moment().format("MMM Do YY");
                     currentTitle.text(`${cityName} (${currentDay})`);
                     var currentIcon = $("#current-weather-icon");
                     currentIcon.addClass("current-weather-icon");
@@ -154,7 +159,7 @@ var fiveDayForecast = function(cityName) {
                     for(var i = 1; i <= 5; i++) {
                         //create card container for future cards
                         var futureDate = $("#future-date-" + i);
-                        date = moment().add(i, "d").format("M/DD/YYYY");
+                        futureDatedate = moment().add(i, "d").format("M/DD/YYYY");
                         futureDate.text(date);
 
                         //add 5 day icon
@@ -199,6 +204,8 @@ $("#search-history-container").on("click", "p", function() {
     var previousCityName = $(this).text();
     currentWeatherZone(previousCityName);
     fiveDayForecast(previousCityName);
+
+
     var previousCityClick = $(this);
     previousCityClick.remove();
 });
