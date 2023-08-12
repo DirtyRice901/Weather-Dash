@@ -7,3 +7,6 @@ The goal of the challenge is to create  weather dashboard that calls data from o
 ![Alt text](06-server-side-apis-homework-demo.png)
 
 ## Links
+https://github.com/DirtyRice901/Weather-Dash
+
+https://dirtyrice901.github.io/Weather-Dash/
